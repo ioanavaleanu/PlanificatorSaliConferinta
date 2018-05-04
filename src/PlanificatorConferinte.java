@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 
 public class PlanificatorConferinte {
-    public ArrayList<Sala> listaSali;
-    public ArrayList<Angajat> listaAngajati;
+    static public ArrayList<Sala> listaSali;
+    static public ArrayList<Angajat> listaAngajati;
 
     public void incarcareDateConferinte(String fisier) {
 
