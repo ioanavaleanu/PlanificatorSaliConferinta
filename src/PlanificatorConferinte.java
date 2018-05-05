@@ -34,8 +34,6 @@ public class PlanificatorConferinte {
 
     static public boolean validareData(LocalDate data) {
         LocalDate data_curenta = LocalDate.now();
-        /*System.out.println("Data " + data_curenta.getYear() + data_curenta.getMonthValue() + data_curenta.getDayOfMonth());
-        System.out.println("Data " + data.getYear() + data.getMonthValue() + data.getDayOfMonth());*/
         if (data_curenta.getYear() < data.getYear())
             return true;
         else if (data_curenta.getYear() == data.getYear() && data_curenta.getMonthValue() < data.getMonthValue())

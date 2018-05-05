@@ -23,19 +23,12 @@ public class TestPlanificareConferinta {
                     nr_conferinta = -1;
                     continue;
                 }
-                /*if (nr_conferinta == -1)
-                    System.out.print("Nu bun " + i + "\n");*/
                 Conferinta conf = new Conferinta(sala, "Conferinta " + i,
                         30, LocalDate.of(2018, 5, 10 + d),
                         LocalTime.of(10 + h, 0), null, null);
                 sala.getListaConferinte().add(conf);
             }
         }
-       /* System.out.println("Ora " + PlanificatorConferinte.listaSali.get(0).getListaConferinte().get(29).getTime().getHour() +
-                "\n Ora " + PlanificatorConferinte.listaSali.get(0).getListaConferinte().get(30).getTime().getHour());
-        System.out.println("Ora " + PlanificatorConferinte.listaSali.get(0).getListaConferinte().get(29).getData().getDayOfMonth() +
-                "\n Ora " + PlanificatorConferinte.listaSali.get(0).getListaConferinte().get(30).getData().getDayOfMonth());*/
-
     }
 
     @Test
