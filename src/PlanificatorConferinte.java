@@ -6,11 +6,10 @@ public class PlanificatorConferinte {
     static public ArrayList<Sala> listaSali = new ArrayList<Sala>();
     static public ArrayList<Angajat> listaAngajati = new ArrayList<Angajat>();
 
-    public static void salvareDateConferinta(Serializable object, String fisier) throws IOException {
+    public static void salvareDateConferinta(Conferinta object, String fisier) throws IOException {
         ObjectOutputStream objstream = new ObjectOutputStream(new FileOutputStream(fisier));
         objstream.writeObject(object);
         objstream.close();
-
     }
 
     public static Conferinta incarcareDateConferinta(String fisier) throws IOException, ClassNotFoundException {
@@ -48,8 +47,8 @@ public class PlanificatorConferinte {
             return false;
     }
 
-    public Sala incarcareDateAngajati(String fisier) {
-        return new Sala();
+    public Angajat incarcareDateAngajati(String fisier) {
+        return new Angajat();
     }
 
     public boolean autentificare() {
@@ -60,11 +59,4 @@ public class PlanificatorConferinte {
 
     }
 
-    public void salvareDateAngajat(String fisier) {
-
-    }
-
-    public static void main(String[] argv) {
-
-    }
 }
