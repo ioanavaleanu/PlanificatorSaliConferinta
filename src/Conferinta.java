@@ -1,8 +1,9 @@
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
-public class Conferinta {
+public class Conferinta implements Serializable{
     private Sala sala;
     private String nume;
     private int nrParticipanti;

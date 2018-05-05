@@ -1,18 +1,15 @@
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
-public class Sala {
+public class Sala implements Serializable{
     private String nume;
     private int nrLocuri;
     private ArrayList<Conferinta> listaConferinte;
     private boolean disponibilitate;
     private LocalDate dataMentenanta;
     private Administrator admin;
-
-    public boolean verificareDisponibilitate() {
-        return disponibilitate;
-    }
 
     public Sala() {
         listaConferinte = new ArrayList<Conferinta>();
@@ -48,23 +45,30 @@ public class Sala {
     }
 
     public LocalTime getAvailableTime(LocalDate data) {
-        int []time = new int[4];
-        int i;
-        int goodTime;
+        int []time = {0, 0, 0, 0};
+        int goodTime = -1;
+
         for (Conferinta conf : this.getListaConferinte()) {
             if (conf.getData().equals(data)) {
-                for (i = 0; i < 4; i++) {
+                for (int i = 0; i < 4; i++) {
                     if (conf.getTime().getHour() == i * 2 + 10)
                         time[i] = 1;
                 }
             }
         }
-        for (i = 0; i < 4; i++) {
+        for (int i = 0; i < 4; i++) {
             if (time[i] != 1) {
                 goodTime = i;
                 break;
             }
         }
-        return LocalTime.of(10 + i * 2, 0);
+        if (goodTime != -1)
+            return LocalTime.of(10 + goodTime * 2, 0);
+        else
+            return null;
+    }
+
+    public boolean verificareDisponibilitate() {
+        return disponibilitate;
     }
 }

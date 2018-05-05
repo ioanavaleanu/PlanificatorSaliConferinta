@@ -1,25 +1,51 @@
+import java.io.*;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class PlanificatorConferinte {
-    static public ArrayList<Sala> listaSali;
-    static public ArrayList<Angajat> listaAngajati;
+    static public ArrayList<Sala> listaSali = new ArrayList<Sala>();
+    static public ArrayList<Angajat> listaAngajati = new ArrayList<Angajat>();
 
-    public void incarcareDateConferinte(String fisier) {
-
-    }
-
-    public void salvareDateConferinta(String fisier) {
-
-    }
-
-    public void serializareSala(Sala sala, String fisier) {
+    public static void salvareDateConferinta(Serializable object, String fisier) throws IOException {
+        ObjectOutputStream objstream = new ObjectOutputStream(new FileOutputStream(fisier));
+        objstream.writeObject(object);
+        objstream.close();
 
     }
 
-    public Sala incarcareSala(String fisier) {
-        return new Sala();
+    public static Conferinta incarcareDateConferinta(String fisier) throws IOException, ClassNotFoundException {
+        ObjectInputStream objstream = new ObjectInputStream(new FileInputStream(fisier));
+        Conferinta object = (Conferinta) objstream.readObject();
+        objstream.close();
+        return object;
+    }
+
+    public void serializareSala(Sala sala, String fisier) throws IOException {
+        ObjectOutputStream objstream = new ObjectOutputStream(new FileOutputStream(fisier));
+        objstream.writeObject(sala);
+        objstream.close();
+    }
+
+    public Sala incarcareSala(String fisier) throws IOException, ClassNotFoundException {
+        ObjectInputStream objstream = new ObjectInputStream(new FileInputStream(fisier));
+        Sala object = (Sala) objstream.readObject();
+        objstream.close();
+        return object;
+    }
+
+    static public boolean validareData(LocalDate data) {
+        LocalDate data_curenta = LocalDate.now();
+        /*System.out.println("Data " + data_curenta.getYear() + data_curenta.getMonthValue() + data_curenta.getDayOfMonth());
+        System.out.println("Data " + data.getYear() + data.getMonthValue() + data.getDayOfMonth());*/
+        if (data_curenta.getYear() < data.getYear())
+            return true;
+        else if (data_curenta.getYear() == data.getYear() && data_curenta.getMonthValue() < data.getMonthValue())
+            return true;
+        else if (data_curenta.getYear() == data.getYear() && data_curenta.getMonthValue() == data.getMonthValue() &&
+                data_curenta.getDayOfMonth() <= data.getDayOfMonth())
+            return true;
+        else
+            return false;
     }
 
     public Sala incarcareDateAngajati(String fisier) {
@@ -39,9 +65,6 @@ public class PlanificatorConferinte {
     }
 
     public static void main(String[] argv) {
-        LocalDate data = LocalDate.of(2018, 5, 13);
-        LocalTime ora = LocalTime.of(16, 0);
-
 
     }
 }
