@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class PlanificatorConferinte {
@@ -33,6 +35,13 @@ public class PlanificatorConferinte {
     }
 
     public void salvareDateAngajat(String fisier) {
+
+    }
+
+    public static void main(String[] argv) {
+        LocalDate data = LocalDate.of(2018, 5, 13);
+        LocalTime ora = LocalTime.of(16, 0);
+
 
     }
 }

@@ -1,8 +1,6 @@
-import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.*;
 
 public class Sala {
     private String nume;
@@ -14,6 +12,20 @@ public class Sala {
 
     public boolean verificareDisponibilitate() {
         return disponibilitate;
+    }
+
+    public Sala() {
+        listaConferinte = new ArrayList<Conferinta>();
+    }
+
+    public Sala(String nume, int nrLocuri, ArrayList<Conferinta> listaConferinte,
+                boolean disponibilitate, LocalDate dataMentenanta, Administrator admin) {
+        this.nume = nume;
+        this.nrLocuri = nrLocuri;
+        this.listaConferinte = listaConferinte;
+        this.disponibilitate = disponibilitate;
+        this.dataMentenanta = dataMentenanta;
+        this.admin = admin;
     }
 
     public int getNrLocuri() {
